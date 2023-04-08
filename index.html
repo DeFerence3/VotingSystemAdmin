@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="assets/index.css" />
+    <link rel="stylesheet" href="./assets/style/index.css" />
     <link
       rel="favorate icon"
-      href="assets/images/favicon.png"
+      href="./assets/images/favicon.png"
       type="image/x-icon"
     />
     <title>OnlineVotingSystem</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
     <section>
@@ -29,7 +29,12 @@
             <td colspan="7" class="btd">
               <div class="form-box">
                 <div class="form-value">
-                  <form id="form" method="post" onsubmit="return false;">
+                  <form
+                    id="form"
+                    method="post"
+                    onsubmit="return false;"
+                    autocomplete="off"
+                  >
                     <h2>Login</h2>
                     <div class="inputbox">
                       <input type="text" id="unm" required />
@@ -38,7 +43,7 @@
                     <div class="inputbox">
                       <ion-icon name="lock-closed-outline"></ion-icon>
                       <input type="password" id="pass" required />
-                      <label for="">Password</label>
+                      <label>Password</label>
                     </div>
                     <p id="err" class="err">Something went wrong...</p>
                     <button id="submit" class="sbmBtn">Log in</button>
@@ -51,6 +56,10 @@
         </tbody>
       </table>
     </section>
-    <script src="./assets/script.js"></script>
+    <script src="node_modules/argon2-browser/dist/argon2-bundled.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script type="module" src="./assets/script/script.js"></script>
   </body>
 </html>

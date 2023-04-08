@@ -2,30 +2,36 @@
 <html lang="en">
   <head>
     <title>OnlineVotingSystem</title>
-    <link rel="stylesheet" href="../assets/maincss.css" />
+    <link rel="stylesheet" href="../assets/style/main.css" />
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <header>
+      <div id="menutoggler">
+        <button class="burger" id="menutogglebutton"></button>
+        <div class="menu">
+          <nav>
+            <a href="./newVoter.html" style="animation-delay: 0.2s"
+              >Add New Voter</a
+            >
+            <a href="./adminAuth.html" style="animation-delay: 0.3s"
+              >Add New Admin</a
+            >
+            <a class="addvote" id="addvote" style="animation-delay: 0.4s"
+              >Add New Election</a
+            >
+            <a class="beck" id="beck" style="animation-delay: 0.5s">Logout</a>
+          </nav>
+        </div>
+      </div>
       <div>
         <h1>Admin login</h1>
-      </div>
-      <div class="navbuttons">
-        <button class="beck" id="beck">Logout</button>
-        <button class="addvote" id="addvote">+</button>
       </div>
     </header>
     <div id="main">
       <div class="inner">
-        <div class="thumbnails" id="thumb">
-          <!-- <div class="box">
-            <div class="inner">
-              <h2>Panchayath Election</h2>
-              <a class="button fit">View</a>
-            </div>
-          </div> -->
-        </div>
+        <div class="thumbnails" id="thumb"></div>
       </div>
       <div class="bgform"></div>
       <div class="form-box">
@@ -36,20 +42,27 @@
             onsubmit="return false;"
             autocomplete="off"
           >
-            <h2>New Election</h2>
             <div class="inputbox">
-              <ion-icon name="uname-outline"></ion-icon>
-              <input type="text" id="eleccat" required />
-              <label for="">Election Catogery</label>
+              <h2>New Election</h2>
+              <select name="electionname" class="elecselector" id="eleccat">
+                <option value="Lok Sabha Election">Lok Sabha Election</option>
+                <option value="Panchayath Election">Panchayath Election</option>
+                <option value="Legislative Assembly Eelection">
+                  Legislative Assembly Eelection
+                </option>
+              </select>
             </div>
             <div class="crca">
-              <button id="create">Create</button>
-              <button id="cancel" onclick="canceller(event)">Cancel</button>
+              <button class="button" id="create">Create</button>
+              <button class="button" id="cancel">Cancel</button>
             </div>
           </form>
         </div>
       </div>
     </div>
-    <script src="../assets/mainscript.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script type="module" src="../assets/script/mainscript.js"></script>
   </body>
 </html>
