@@ -11,7 +11,6 @@ const menutoggler = document.getElementById("menutogglebutton");
 
 /* after window is loaded ,data from firebase is fetched */
 window.onload = electionFetcher();
-window.onload = electionFetcheRealTime();
 
 function electionFetcher() {
   /* see firebase documentation for better understanding of this functions(search:fetch data from firebase) */
@@ -22,25 +21,15 @@ function electionFetcher() {
       querySnapshot.forEach((doc) => {
         details.push(doc.data());
       });
-      details.forEach((element) => {
-        electionBoxCreater(element.Name, element.Date);
-      });
+      docFetcher(details);
     });
 }
 
-function electionFetcheRealTime() {
-  /* see firebase documentation for better understanding of this functions(search:fetch data from firebase) */
-  db.collection("Election_Data").onSnapShot((querySnapshot) => {
-    var details = [];
-    querySnapshot.forEach((doc) => {
-      details.push(doc.data());
-    });
-    details.forEach((element) => {
-      electionBoxCreater(element.Name, element.Date);
-    });
+function docFetcher(docArray) {
+  docArray.forEach((element) => {
+    electionBoxCreater(element.Name, element.Date);
   });
 }
-
 /* logs out of the current session */
 bk.addEventListener("click", function (event) {
   event.preventDefault();

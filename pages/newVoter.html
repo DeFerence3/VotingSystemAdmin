@@ -18,73 +18,48 @@
     <div id="main">
       <table align="center">
         <tbody>
-          <form
-            id="form"
-            method="post"
-            onsubmit="return false;"
-            autocomplete="off"
-          >
-            <tr>
-              <td class="btd">
-                <div class="inputbox">
-                  <input
-                    type="number"
-                    id="vid"
-                    placeholder="Voter's ID"
-                    required
-                  />
-                </div>
-              </td>
-              <td class="btd">
-                <div class="inputbox">
-                  <input type="text" id="unm" placeholder="Username" required />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="btd">
-                <div class="inputbox">
-                  <input
-                    type="password"
-                    id="pwd"
-                    placeholder="Password"
-                    required
-                  />
-                </div>
-              </td>
-              <td class="btda">
-                <div class="inputbx">
-                  <!-- <input
-                    type="file"
-                    id="pimg"
-                    accept="image/jpeg"
-                    accept="image/png"
-                    style="display: none"
-                    required
-                  />
-                  <label for="pimg">
-                    <img
-                      src="../assets/images/add.png"
-                      alt="Avatar"
-                      style="width: 32px"
-                    /> -->
-                    <span id="fileName">Add An Avatar</span>
-                  </label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" align="center">
-                <button id="submit" class="sbmBtn">Submit</button>
-              </td>
-            </tr>
-          </form>
+        <form id="form" method="post" onsubmit="return false;" enctype="multipart/form-data"></form>
+          <tr>
+            <td class="btd">        
+              <div class="inputbox">
+                <input type="number" id="vid" placeholder="Voter's ID" required />
+              </div>
+            </td>
+            <td  class="btd">
+              <div class="inputbox">
+                <input type="text" id="unm" placeholder="Username" required />
+              </div>
+            </td>  
+          </tr>
+          <tr>
+            <td class="btd">        
+              <div class="inputbox">
+                <input type="password" id="pwd" placeholder="Password" required />
+                <label for=""></label>
+              </div>
+            </td>
+            <td  class="btda">
+              <div class="inputbx">
+                <input type="file" id="pimg" accept="image/jpeg" accept="image/png" style="display:none;"  required/>
+                <label for="pimg">
+                    <img src="../assets/images/add.png" alt="Avatar" style="width: 32px;"/>
+                    <span id="fileName" >Add An Avatar</span>
+                </label>
+              </div>
+            </td>  
+          </tr>
+          <tr>
+            <td colspan="2" align="center">
+              <button id="submit" class="sbmBtn">Submit</button>
+            </td>
+          </tr>
+        </form>
         </tbody>
       </table>
     </div>
     <div class="bgform"></div>
     <div class="progressIndicator">
-      <label id="progressBar" for=""></label>
+        <label id="progressBar" for=""></label>
     </div>
     <script src="../node_modules/argon2-browser/dist/argon2-bundled.min.js"></script>
     <script src="../node_modules/random-string-generator/dist/random.umd.js"></script>

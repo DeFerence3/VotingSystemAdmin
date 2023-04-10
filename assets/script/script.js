@@ -1,21 +1,24 @@
 import { adminAuther } from "./argon2.js";
-import { db } from "./firebase.js";
 
-const skipp = document.getElementById("skp");
-const headers = document.querySelectorAll("th");
-const err = document.getElementById("err");
-const submiter = document.getElementById("submit");
+const skipp = document.getElementById('skp');
+const headers = document.querySelectorAll('th');
+const err = document.getElementById('err');
+const submiter = document.getElementById('submit');
 let currentHeader = 0;
-let id = 0;
-let a = 0;
+let id = 1;
+let a=0;
 
 highligter();
-window.onload = nameFetch;
+
 //skip button
-skipp.onclick = function () {
+skipp.onclick = function(){
   a++;
-  if (a > 2) {
-    skipp.style.display = "none";
+  if(a>2){
+    id++;
+    skipp.style.display='none';
+  }
+  else{
+    id++;
   }
   err.style.display = "none";
   highligter();
@@ -23,47 +26,43 @@ skipp.onclick = function () {
 };
 
 //formSumbitHandler
-submiter.addEventListener("click", function (event) {
+submiter.addEventListener("click",function(event){
+  event.preventDefault();
+  
   var name = document.getElementById("unm").value;
   var pass = document.getElementById("pass").value;
-  let adminid = "Admin" + id;
-
-  adminAuther(name, pass, adminid);
-});
+  let adminid = "Admin"+id;
+  if(adminAuther(name,pass,adminid)){
+    //if login is succesfull clears the form and highlights next admins name
+    id++;
+    highligter();
+  }
+  else{
+    //else throws a error message
+    err.style.display = "block";
+  }
+})
 
 //function to highlight each admin's name on a succesfull login and a skip
-export function highligter() {
-  id++;
+function highligter(){
+
   err.style.display = "none";
-  if (currentHeader > 0) {
-    headers[currentHeader - 1].classList.remove("foc");
+  if(currentHeader > 0){
+    headers[currentHeader -1].classList.remove('foc');
   }
 
-  if (currentHeader >= 7) {
-    currentHeader = 0;
+  if(currentHeader >= 7){
+    currentHeader = 0
     window.location.replace("./pages/main.html");
   }
-
-  headers[currentHeader].classList.add("foc");
+  
+  headers[currentHeader].classList.add('foc');
+  /* var x  = document.getElementsById('jaba');
+  var d = x.innerHTML;
+  console.log(x);
+  console.log(d);
+  this.window.alert("hi") */
   currentHeader++;
   document.getElementById("unm").value = "";
   document.getElementById("pass").value = "";
-}
-
-//fetching adminnames from db and displayes in header
-function nameFetch() {
-  var admNum = 1;
-  db.collection("Admin_User")
-    .get()
-    .then((querySnapshot) => {
-      var details = [];
-      querySnapshot.forEach((doc) => {
-        details.push(doc.data());
-      });
-      details.forEach((element) => {
-        var e = document.getElementById("adm" + admNum);
-        e.textContent = element.Name;
-        admNum++;
-      });
-    });
 }

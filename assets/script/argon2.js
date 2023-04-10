@@ -1,9 +1,7 @@
 /* imports  */
 import { db } from "./firebase.js";
-import { highligter } from "./script.js";
 
 const adminCreater = document.getElementById("adminCreater");
-const err = document.getElementById("err");
 
 export function adminAuther(name, pass, adminid) {
   var docref = db.collection("Admin_User").doc(adminid);
@@ -14,25 +12,22 @@ export function adminAuther(name, pass, adminid) {
         let uname = doc.data().Username;
         let pswd = doc.data().Password;
 
-        console.log(uname);
-        console.log(pswd);
-
         argon2
           .verify({ pass: name, encoded: uname })
           .then(() => {
             argon2
               .verify({ pass: pass, encoded: pswd })
               .then(() => {
-                highligter();
+                return true;
               })
               .catch((e) => {
                 console.log("ErrorPass:" + e);
-                err.style.display = "block";
+                return false;
               });
           })
           .catch((e) => {
             console.log("ErrorUnm:" + e);
-            err.style.display = "block";
+            return false;
           });
       } else {
         console.log("No Document!");
@@ -43,14 +38,16 @@ export function adminAuther(name, pass, adminid) {
     });
 }
 
-export function verifier(user, pass) {
+adminCreater.addEventListener("click", function () {
+  var name = document.getElementById("unm").value;
+  var pass = document.getElementById("pass").value;
   argon2
     .hash({
       // required
       pass: pass,
       salt: random(16),
       // optional
-      time: 2, 
+      time: 2, // the number of iterations
       mem: 16384, // used memory, in KiB
       hashLen: 32, // desired hash length
       parallelism: 1, // desired parallelism (it won't be computed in parallel, however)
@@ -67,5 +64,4 @@ export function verifier(user, pass) {
       console.log("errMessage" + err.message); // error message as string, if available
       console.log("errCode:" + err.code); // numeric error code
     });
-}
-/* */
+});
