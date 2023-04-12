@@ -16,7 +16,7 @@
       </div>
     </header>
     <div id="main">
-      <table align="center">
+      <table>
         <tbody>
           <form
             id="form"
@@ -28,16 +28,21 @@
               <td class="btd">
                 <div class="inputbox">
                   <input
-                    type="number"
-                    id="vid"
-                    placeholder="Voter's ID"
+                    type="text"
+                    id="elNm"
+                    placeholder="Election Name"
                     required
                   />
                 </div>
               </td>
               <td class="btd">
                 <div class="inputbox">
-                  <input type="text" id="unm" placeholder="Username" required />
+                  <input
+                    type="text"
+                    id="cont1"
+                    placeholder="Contestant1"
+                    required
+                  />
                 </div>
               </td>
             </tr>
@@ -45,38 +50,19 @@
               <td class="btd">
                 <div class="inputbox">
                   <input
-                    type="password"
-                    id="pwd"
-                    placeholder="Password"
+                    type="text"
+                    id="cont2"
+                    placeholder="Contestant2"
                     required
                   />
-                </div>
-              </td>
-              <td class="btda">
-                <div class="inputbx">
-                  <input
-                    type="file"
-                    id="pimg"
-                    accept="image/jpeg"
-                    accept="image/png"
-                    style="display: none"
-                    required
-                  />
-                  <label for="pimg">
-                    <img
-                      src="../assets/images/add.png"
-                      alt="Avatar"
-                      style="width: 32px"
-                    />
-                    <span id="fileName">Add An Avatar</span>
-                  </label>
                 </div>
               </td>
             </tr>
             <tr>
-              <td colspan="2" align="center">
+              <td rowspan="3" class="btnTd">
                 <button id="submit" class="sbmBtn">Submit</button>
               </td>
+              <td></td>
             </tr>
           </form>
         </tbody>
@@ -92,6 +78,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script type="module" src="../assets/script/firebase.js"></script>
-    <script type="module" src="../assets/script/newVoterScript.js"></script>
+    <script type="module" src="../assets/script/newElection.js"></script>
   </body>
 </html>

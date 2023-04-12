@@ -1,7 +1,25 @@
 {
   "dependencies": {
-    "argon2": "^0.30.3",
     "argon2-browser": "^1.18.0",
     "random-string-generator": "^1.0.1"
-  }
+  },
+  "name": "votingsystemadmin",
+  "version": "1.0.0",
+  "main": "index.html",
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeFerence3/VotingSystemAdmin.git"
+  },
+  "author": "DeFerence",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeFerence3/VotingSystemAdmin/issues"
+  },
+  "homepage": "https://github.com/DeFerence3/VotingSystemAdmin#readme",
+  "description": ""
 }

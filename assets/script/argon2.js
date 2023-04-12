@@ -1,7 +1,9 @@
 /* imports  */
 import { db } from "./firebase.js";
+import { highligter } from "./script.js";
 
 const adminCreater = document.getElementById("adminCreater");
+const err = document.getElementById("err");
 
 export function adminAuther(name, pass, adminid) {
   var docref = db.collection("Admin_User").doc(adminid);
@@ -12,22 +14,25 @@ export function adminAuther(name, pass, adminid) {
         let uname = doc.data().Username;
         let pswd = doc.data().Password;
 
+        console.log(uname);
+        console.log(pswd);
+
         argon2
           .verify({ pass: name, encoded: uname })
           .then(() => {
             argon2
               .verify({ pass: pass, encoded: pswd })
               .then(() => {
-                return true;
+                highligter();
               })
               .catch((e) => {
                 console.log("ErrorPass:" + e);
-                return false;
+                err.style.display = "block";
               });
           })
           .catch((e) => {
             console.log("ErrorUnm:" + e);
-            return false;
+            err.style.display = "block";
           });
       } else {
         console.log("No Document!");
@@ -38,16 +43,14 @@ export function adminAuther(name, pass, adminid) {
     });
 }
 
-adminCreater.addEventListener("click", function () {
-  var name = document.getElementById("unm").value;
-  var pass = document.getElementById("pass").value;
+export function verifier(user, pass) {
   argon2
     .hash({
       // required
       pass: pass,
       salt: random(16),
       // optional
-      time: 2, // the number of iterations
+      time: 2, 
       mem: 16384, // used memory, in KiB
       hashLen: 32, // desired hash length
       parallelism: 1, // desired parallelism (it won't be computed in parallel, however)
@@ -64,4 +67,5 @@ adminCreater.addEventListener("click", function () {
       console.log("errMessage" + err.message); // error message as string, if available
       console.log("errCode:" + err.code); // numeric error code
     });
-});
+}
+/* */

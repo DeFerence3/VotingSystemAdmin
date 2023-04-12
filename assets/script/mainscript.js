@@ -2,16 +2,18 @@
 import { db } from "./firebase.js";
 
 /* Variables declared */
+var viewBt;
 const bk = document.getElementById("beck");
 const addvote = document.getElementById("addvote");
 const thumbnails = document.getElementById("thumb");
-const create = document.getElementById("create");
 const cancell = document.getElementById("cancel");
 const menutoggler = document.getElementById("menutogglebutton");
 
 /* after window is loaded ,data from firebase is fetched */
-window.onload = electionFetcher();
-
+window.onload = () => {
+  electionFetcher();
+  electionFetcheRealTime();
+};
 function electionFetcher() {
   /* see firebase documentation for better understanding of this functions(search:fetch data from firebase) */
   db.collection("Election_Data")
@@ -19,17 +21,28 @@ function electionFetcher() {
     .then((querySnapshot) => {
       var details = [];
       querySnapshot.forEach((doc) => {
-        details.push(doc.data());
+        var iD = { id: doc.id };
+        details.push(Object.assign({}, doc.data(), iD));
       });
-      docFetcher(details);
+      details.forEach((element) => {
+        electionBoxCreater(element.Name, element.Date, element.id);
+      });
     });
 }
 
-function docFetcher(docArray) {
-  docArray.forEach((element) => {
-    electionBoxCreater(element.Name, element.Date);
-  });
+function electionFetcheRealTime() {
+  /* see firebase documentation for better understanding of this functions(search:fetch data from firebase) */
+  /* db.collection("Election_Data").onSnapShot((querySnapshot) => {
+    var details = [];
+    querySnapshot.forEach((doc) => {
+      details.push(doc.data());
+    });
+    details.forEach((element) => {
+      electionBoxCreater(element.Name, element.Date);
+    });
+  }); */
 }
+
 /* logs out of the current session */
 bk.addEventListener("click", function (event) {
   event.preventDefault();
@@ -37,17 +50,17 @@ bk.addEventListener("click", function (event) {
 });
 
 /* add vote popup visibler */
-addvote.addEventListener("click", function (event) {
+/* addvote.addEventListener("click", function (event) {
   var rform = document.querySelector(".form-box");
   var blur = document.querySelector(".bgform");
   rform.style.display = "inline-flex";
   blur.style.display = "flex";
-});
+}); */
 
 /* unvisibler */
-cancell.addEventListener("click", function () {
+/* cancell.addEventListener("click", function () {
   canceller();
-});
+}); */
 
 function canceller() {
   var rform = document.querySelector(".form-box");
@@ -57,15 +70,15 @@ function canceller() {
 }
 
 /* creates new election */
-create.addEventListener("click", function (event) {
+/* create.addEventListener("click", function (event) {
   var election = document.getElementById("eleccat").value;
   var date = new Date().toLocaleString();
   electionBoxCreater(election, date);
   canceller();
-});
+}); */
 
 /* create each election boxes */
-function electionBoxCreater(electionName, date) {
+function electionBoxCreater(electionName, date, elId) {
   var newBox = document.createElement("div");
   newBox.setAttribute("class", "box");
 
@@ -83,7 +96,8 @@ function electionBoxCreater(electionName, date) {
 
   var newButton = document.createElement("a");
   newButton.setAttribute("class", "button fit");
-  newButton.setAttribute("href", "./electionDetails.html");
+  newButton.setAttribute("href", "./electionDetails.html?param=" + elId);
+  newButton.setAttribute("id", "viewBtn");
   newButton.innerHTML = "View";
 
   newDetails.appendChild(newH);
@@ -94,6 +108,11 @@ function electionBoxCreater(electionName, date) {
   thumbnails.appendChild(newBox);
 }
 
+export function btss() {
+  var elId = viewBt.dataset.elId;
+  detailFetcher(elId);
+  window.location.href = "./electionDetails.html";
+}
 /* menu toggler */
 menutoggler.addEventListener("click", function () {
   document.getElementById("menutoggler").classList.toggle("open");

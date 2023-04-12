@@ -15,10 +15,14 @@
             <a href="./newVoter.html" style="animation-delay: 0.2s"
               >Add New Voter</a
             >
-            <a href="./adminAuth.html" style="animation-delay: 0.3s"
-              >Add New Admin</a
+            <a href="./editAdmin.html" style="animation-delay: 0.3s"
+              >Update Admin</a
             >
-            <a class="addvote" id="addvote" style="animation-delay: 0.4s"
+            <a
+              href="./newElection.html"
+              class="addvote"
+              id="addvote"
+              style="animation-delay: 0.4s"
               >Add New Election</a
             >
             <a class="beck" id="beck" style="animation-delay: 0.5s">Logout</a>
@@ -31,9 +35,11 @@
     </header>
     <div id="main">
       <div class="inner">
-        <div class="thumbnails" id="thumb"></div>
+        <div class="thumbnails" id="thumb">
+          <!-- Boxes loads here -->
+        </div>
       </div>
-      <div class="bgform"></div>
+      <!-- <div class="bgform"></div>
       <div class="form-box">
         <div class="form-value">
           <form
@@ -58,11 +64,12 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> -->
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script type="module" src="../assets/script/mainscript.js"></script>
+    <!-- <script src="../assets/script/testscripts.js"></script> -->
   </body>
 </html>
