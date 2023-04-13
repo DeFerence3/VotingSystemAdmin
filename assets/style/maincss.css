@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body {
+  position: relative;
+  z-index: 1;
+  background-color: #202024;
+  background-repeat: no-repeat;
+
+}
+header {
+  background-color: #42424f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+h1 {
+  color: #fff;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+}
+
+#main {
+  padding: 4em 0 2em 0;
+}
+
+@media screen and (max-width: 736px) {
+  #main {
+    padding: 3em 0 1em 0;
+  }
+}
+#main .inner {
+  width: 100%;
+  max-width: 80em;
+  margin: 0;
+}
+
+@media screen and (max-width: 480px) {
+  #main .inner {
+    width: 95%;
+  }
+}
+
+button,
+.button {
+  appearance: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  background-color: #233452;
+  border-radius: 8px;
+  border: 0;
+  color: #ffffff !important;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 20px;
+  font-family: 'Abeezee', sans-serif;
+  height: 2.85em;
+  line-height: 2.95em;
+  padding: 0 1.5em;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  flex: 1;
+  margin: 0 5px;
+}
+
+button:hover,
+.button:hover {
+  background-color: #6aa7a1;
+}
+
+button:active,
+.button:active {
+  background-color: #5ec0b6;
+}
+
+button.fit,
+.button.fit {
+  display: block;
+  margin: 0 0 1em 0;
+  width: 100%;
+}
+
+input[type="submit"].small,
+input[type="reset"].small,
+input[type="button"].small,
+button.small,
+.button.small {
+  font-size: 0.8em;
+}
+
+input[type="submit"].big,
+input[type="reset"].big,
+input[type="button"].big,
+button.big,
+.button.big {
+  font-size: 1.35em;
+}
+
+input[type="submit"].disabled,
+input[type="submit"]:disabled,
+input[type="reset"].disabled,
+input[type="reset"]:disabled,
+input[type="button"].disabled,
+input[type="button"]:disabled,
+button.disabled,
+button:disabled,
+.button.disabled,
+.button:disabled {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  box-shadow: inset 0 -0.15em 0 0 rgba(0, 0, 0, 0.15);
+  color: #202024 !important;
+  cursor: default;
+  opacity: 0.25;
+}
+
+@media screen and (max-width: 480px) {
+  input[type="submit"],
+  input[type="reset"],
+  input[type="button"],
+  button,
+  .button {
+    padding: 0;
+  }
+}
+
+label {
+  display: block;
+}
+
+input[type="text"] {
+  appearance: none;
+  background: rgba(144, 144, 144, 0.075);
+  border-radius: 4px;
+  border: none;
+  border: solid 1px rgba(144, 144, 144, 0.25);
+  color: inherit;
+  display: block;
+  outline: 0;
+  padding: 0 1em;
+  text-decoration: none;
+  width: 100%;
+}
+
+input[type="text"]:focus {
+  height: 2.75em;
+}
+
+.bgform {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: none;
+  filter: blur(5px);
+  transition: 0.3s;
+}
+
+.form-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  width: 400px;
+  height: 250px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  transition: 0.3s;
+}
+
+.form h2 {
+  font-size: 2em;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.inputbox {
+  position: relative;
+  margin: 30px 0;
+  width: 310px;
+  border-bottom: 2px solid #fff;
+}
+
+.inputbox label {
+  position: absolute;
+  font-family: 'Abeezee', sans-serif;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 1em;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  top: -5px;
+}
+
+.inputbox input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  padding: 0 35px 0 5px;
+  color: #fff;
+}
+
+.crca {
+  display: flex;
+  justify-content: space-between;
+}
+table {
+  border: 5px;
+  padding: 20px;
+  border-spacing: 10px;
+}
+
+.btd {
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.inputbx {
+  position: relative;
+  width: 310px;
+  border-bottom: 2px solid #fff;
+}
+
+.inputbx input {
+  width: 100%;
+  height: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  padding: 0 0 0 0;
+  color: #fff;
+}
+
+.inputbx label {
+  text-align: left;
+  font-family: 'Abeezee', sans-serif;
+  color: #fff;
+  font-size: 1em;
+  pointer-events: none;
+  margin-bottom: 6px;
+  padding-left: 5px;
+}
+
+.btda {
+  text-align: center;
+  padding-left: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 10px;
+}
+
+h4{
+  color: #ffffffaf;
+  font-family: 'Abeezee', sans-serif;
+  font-weight: lighter;
+  font-size: 2ex;
+  padding-top: 20px;
+}
+
+.progress-bar::after {
+  content: "";
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #139a0f;
+  animation: progress-animation 2s ease-in-out infinite;
+}
+
+@keyframes progress-animation {
+  0% {
+    width: 0%;
+  }
+  25%{
+    width: 100%;
+  }
+  50% {
+    width: 0%;
+  }
+  75% {
+    width:100%
+  }
+  100% {
+    width:0%
+  }
+}

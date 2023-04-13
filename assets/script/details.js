@@ -69,7 +69,7 @@ function detailFetcher() {
           });
 
           const userlist = db.collection("Test_User");
-          const votedlist = userlist.where(elcId, "==",0);
+          const votedlist = userlist.where(elcId, "==",1);
           votedlist.get()
             .then(querySnapshot => {
               const numberOfDocs = querySnapshot.size;
