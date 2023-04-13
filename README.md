@@ -53,7 +53,7 @@ and back to login page there will be your Admin Names
 After login you can create your elections,give permission to voters and all the [features listed](#features)
 
 After that your voters can vote through Voters Side Application
-### Voters Side Application
+### Voters Side Android Application
 
 Voters Side Application is built and maintained by my fellow project member,here is its repo :
 [Voters Side App](https://github.com/danielpaul-123/OnlineVotingSystem)
