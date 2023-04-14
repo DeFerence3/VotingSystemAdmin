@@ -1,6 +1,7 @@
 import { db } from "./firebase.js";
 window.onload = detailFetcher;
 
+const bk = document.getElementById("bkbutton");
 var table = document.getElementById("detailstable");
 
 function detailFetcher() {
@@ -96,3 +97,8 @@ function detailFetcher() {
       console.log("Error getting document:", error);
     });
 }
+
+bk.addEventListener("click", function (event) {
+  event.preventDefault();
+  window.location.replace("main.html");
+});
