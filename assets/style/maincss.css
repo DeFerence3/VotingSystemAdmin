@@ -259,6 +259,21 @@ table {
   color: #fff;
 }
 
+select {
+  width: 100%;
+  height: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  padding: 0 0 0 0;
+  color: #fff;
+}
+
+option {
+  background-color:#202024;
+}
+
 .inputbx label {
   text-align: left;
   font-family: 'Abeezee', sans-serif;
