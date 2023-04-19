@@ -27,7 +27,6 @@ sbtbuton.addEventListener("click", function (event){
     // check if the string is exactly 8 characters long
     const eid = randomString.padEnd(8, '0');
 
-    console.log(typeof stt, typeof ett);
     var docref = db.collection("Election_Data").doc(eid);
     const data = {
         Name: elnm,
@@ -54,10 +53,10 @@ function addcontestants(_elid,_ct1,_ct2,_ct3,_ct4)
     var docref = db.collection("Election_Data").doc(eid);
 
     const data = {
-        Constestant1: ct1,
-        Constestant2: ct2,
-        Constestant3: ct3,
-        Constestant4: ct4,
+        Contestant1: ct1,
+        Contestant2: ct2,
+        Contestant3: ct3,
+        Contestant4: ct4,
     }
 
     const nonNullData = {};
@@ -93,9 +92,48 @@ function addtovoter(_elid)
         return batch.commit();
     })
     .then(() => {
-        console.log("Success");
+        notaadd(eid);
     })
     .catch((error) => {
         console.error("Error!", error);
     });
+}
+
+function notaadd(_elid)
+{
+    var eid = _elid;
+    var estatref = db.collection("Election_Stats").doc(eid);
+    const data = {
+        NOTA: 0,
+    };
+    estatref.set(data).then(() => {
+        addctstat(eid);
+    }).catch((error) => {
+        console.error("Error: ", error);
+    });
+}
+
+function addctstat(_elid)
+{
+    var eid = _elid;
+    var estatref = db.collection("Election_Stats").doc(eid);
+    for(var i=1; i<=4; i++)
+    {
+        const ctid = "ct"+i;
+        console.log(ctid);
+        if(!(document.getElementById(ctid).value==""))
+        {
+            console.log(document.getElementById(ctid).value);
+            const ct = "Contestant"+i;
+            const data = {
+                [ct]:0,
+            };
+            estatref.update(data).then(() => {
+                console.log("Success!");
+                window.location.replace("main.html");
+            }).catch((error) => {
+                console.error("Error: ", error);
+            });
+        }
+    }
 }
