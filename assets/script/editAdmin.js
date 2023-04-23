@@ -1,38 +1,107 @@
 import { db } from "./firebase.js";
 
-const headers = document.querySelectorAll("th");
-
-let currentHeader = 0;
-let id = 0;
-
 window.onload = nameFetch;
 
 adminUpdater.addEventListener("click", function () {
-  if(!(document.getElementById("nm").value==""))
-  {
-    console.log(document.getElementById("nm").value);
-    console.log(currentHeader);
-    updateusername();
-  }
+  var a=currentHeader;
+  a++;
+  const aid = "Admin"+a;
+  console.log(aid);
+  updatename(aid);
 });
 
-function updateusername()
-{
-  if(!(document.getElementById("unm").value==""))
+function updatename(_aid) {
+  const aid = _aid;
+  console.log(aid);
+  if(!(document.getElementById("nm").value==""))
   {
-    console.log(document.getElementById("unm").value);
-    console.log(currentHeader);
-    updatepassword();
+    const nm = document.getElementById("nm").value;
+    const data = {
+      Name:nm,
+    }
+    docref.update(data).then(() => {
+      console.log("Success!");
+      updateusername(aid);
+    }).catch((error) => {
+      console.log("Error!", error);
+    });
   }
+  updateusername(aid);
 }
 
-function updatepassword()
+function updateusername(_aid)
 {
+  const aid = _aid;
+  console.log(aid);
+  var docref = db.collection("Admin_User").doc(aid);
+  if(!(document.getElementById("unm").value==""))
+  {
+    const unm = document.getElementById("unm").value;
+    argon2.hash({
+      pass:unm,
+      salt:random(16),
+      time:2,
+      mem:16384,
+      hashLen:32,
+      parallelism:1,
+      type:argon2.ArgonType.Argon2id,
+
+      }).then(h => {
+        const hashunm = h.encoded;
+        console.log(hashunm);
+        const data = {
+          Username:hashunm,
+        };
+
+        docref.update(data).then(() => {
+          console.log("Success!");
+          updatepassword(aid);
+        }).catch((error) => {
+          console.log("Error!", error);
+        });
+
+      }).catch(e => {
+        console.error("Error hashing!",e.message, e.code);
+      });
+  }
+  updatepassword(aid);
+}
+
+function updatepassword(_aid)
+{
+  const aid = _aid;
+  console.log(aid);
+  var docref = db.collection("Admin_User").doc(aid);
   if(!(document.getElementById("pass").value==""))
   {
-    console.log(document.getElementById("pass").value);
-    console.log(currentHeader);
+    const pass = document.getElementById("pass").value;
+    argon2.hash({
+      pass:pass,
+      salt:random(16),
+      time:2,
+      mem:16384,
+      hashLen:32,
+      parallelism:1,
+      type:argon2.ArgonType.Argon2id,
+
+      }).then(h => {
+        const hashpass = h.encoded;
+        console.log(hashpass);
+        const data = {
+          Password:hashpass,
+        }
+
+        docref.update(data).then(() => {
+          console.log("Success!");
+        }).catch((error) => {
+          console.log("Error!", error);
+        });
+
+      }).catch(e => {
+        console.error("Error hashing!",e.message, e.code);
+      });
   }
+  document.getElementById("form").reset();
 }
 
 function nameFetch() {
@@ -50,22 +119,4 @@ function nameFetch() {
         admNum++;
       });
     });
-}
-
-function highligterOnAdminEdit() {
-  id++;
-  err.style.display = "none";
-  if (currentHeader > 0) {
-    headers[currentHeader - 1].classList.remove("foc");
-  }
-
-  if (currentHeader >= 7) {
-    currentHeader = 0;
-    window.location.replace("./pages/main.html");
-  }
-
-  headers[currentHeader].classList.add("foc");
-  currentHeader++;
-  document.getElementById("unm").value = "";
-  document.getElementById("pass").value = "";
 }

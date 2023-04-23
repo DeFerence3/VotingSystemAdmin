@@ -79,8 +79,11 @@ input:valid ~ label {
   height: 35px;
   position: relative;
   background: none;
+  border: 0;
+  font-size: 15px;
+  cursor: pointer;
   padding-top: 20px;
-  color: gray;
+  color: rgb(158, 158, 158);
   float: right;
 }
 .sbmBtn {

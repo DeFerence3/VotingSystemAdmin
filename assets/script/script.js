@@ -13,10 +13,7 @@ highligter();
 window.onload = nameFetch;
 //skip button
 skipp.onclick = function () {
-  a++;
-  if (a > 2) {
-    skipp.style.display = "none";
-  }
+  skipp.style.display = "none";
   err.style.display = "none";
   highligter();
   form.reset();

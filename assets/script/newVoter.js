@@ -64,7 +64,8 @@ function argonpass(_hashuname)
     firestoreupload(hashuname,hashpass);
     }).catch(e => {
       console.error(e.message, e.code);
-      document.getElementById("progress").style.display = "none";});
+      document.getElementById("progress").style.display = "none";
+    });
 }
 
 function firestoreupload(_hashuname,_hashpass)
