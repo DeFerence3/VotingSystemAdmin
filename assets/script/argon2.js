@@ -54,7 +54,7 @@ export function verifier(user, pass) {
       mem: 16384, // used memory, in KiB
       hashLen: 32, // desired hash length
       parallelism: 1, // desired parallelism (it won't be computed in parallel, however)
-      type: argon2.ArgonType.Argon2d, // Argon2d, Argon2i, Argon2id
+      type: argon2.ArgonType.Argon2id, // Argon2d, Argon2i, Argon2id
     })
     // result
     .then((res) => {

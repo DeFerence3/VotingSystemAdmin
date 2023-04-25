@@ -1,50 +1,108 @@
 import { db } from "./firebase.js";
 
-const headers = document.querySelectorAll("th");
-
-let currentHeader = 0;
-let id = 0;
-var hId = 1,
-  tempHId;
-
-fns(0);
-
-highligterOnAdminEdit();
 window.onload = nameFetch;
 
-export function fns(tempHId) {
-  headers[hId].classList.remove("foc");
-  hId = tempHId;
-  headers[tempHId].classList.add("foc");
+adminUpdater.addEventListener("click", function () {
+  var a=currentHeader;
+  a++;
+  const aid = "Admin"+a;
+  console.log(aid);
+  updatename(aid);
+});
+
+function updatename(_aid) {
+  const aid = _aid;
+  console.log(aid);
+  if(!(document.getElementById("nm").value==""))
+  {
+    const nm = document.getElementById("nm").value;
+    const data = {
+      Name:nm,
+    }
+    docref.update(data).then(() => {
+      console.log("Success!");
+      updateusername(aid);
+    }).catch((error) => {
+      console.log("Error!", error);
+    });
+  }
+  updateusername(aid);
 }
 
-adminCreater.addEventListener("click", function () {
-  var name = document.getElementById("unm").value;
-  var pass = document.getElementById("pass").value;
-  argon2
-    .hash({
-      // required
-      pass: pass,
-      salt: random(16),
-      // optional
-      time: 2,
-      mem: 16384,
-      hashLen: 32,
-      parallelism: 1,
-      type: argon2.ArgonType.Argon2d,
-    })
-    // result
-    .then((res) => {
-      res.hash;
-      res.hashHex;
-      console.log(res.encoded);
-    })
-    // or error
-    .catch((err) => {
-      console.log("errMessage" + err.message); // error message as string, if available
-      console.log("errCode:" + err.code); // numeric error code
-    });
-});
+function updateusername(_aid)
+{
+  const aid = _aid;
+  console.log(aid);
+  var docref = db.collection("Admin_User").doc(aid);
+  if(!(document.getElementById("unm").value==""))
+  {
+    const unm = document.getElementById("unm").value;
+    argon2.hash({
+      pass:unm,
+      salt:random(16),
+      time:2,
+      mem:16384,
+      hashLen:32,
+      parallelism:1,
+      type:argon2.ArgonType.Argon2id,
+
+      }).then(h => {
+        const hashunm = h.encoded;
+        console.log(hashunm);
+        const data = {
+          Username:hashunm,
+        };
+
+        docref.update(data).then(() => {
+          console.log("Success!");
+          updatepassword(aid);
+        }).catch((error) => {
+          console.log("Error!", error);
+        });
+
+      }).catch(e => {
+        console.error("Error hashing!",e.message, e.code);
+      });
+  }
+  updatepassword(aid);
+}
+
+function updatepassword(_aid)
+{
+  const aid = _aid;
+  console.log(aid);
+  var docref = db.collection("Admin_User").doc(aid);
+  if(!(document.getElementById("pass").value==""))
+  {
+    const pass = document.getElementById("pass").value;
+    argon2.hash({
+      pass:pass,
+      salt:random(16),
+      time:2,
+      mem:16384,
+      hashLen:32,
+      parallelism:1,
+      type:argon2.ArgonType.Argon2id,
+
+      }).then(h => {
+        const hashpass = h.encoded;
+        console.log(hashpass);
+        const data = {
+          Password:hashpass,
+        }
+
+        docref.update(data).then(() => {
+          console.log("Success!");
+        }).catch((error) => {
+          console.log("Error!", error);
+        });
+
+      }).catch(e => {
+        console.error("Error hashing!",e.message, e.code);
+      });
+  }
+  document.getElementById("form").reset();
+}
 
 function nameFetch() {
   var admNum = 1;
@@ -62,58 +120,3 @@ function nameFetch() {
       });
     });
 }
-
-export function highligterOnAdminEdit() {
-  id++;
-  err.style.display = "none";
-  if (currentHeader > 0) {
-    headers[currentHeader - 1].classList.remove("foc");
-  }
-
-  if (currentHeader >= 7) {
-    currentHeader = 0;
-    window.location.replace("./pages/main.html");
-  }
-
-  headers[currentHeader].classList.add("foc");
-  currentHeader++;
-  document.getElementById("unm").value = "";
-  document.getElementById("pass").value = "";
-}
-
-function nameFetchRealTime() {
-  var admNum = 1;
-  db.collection("Admin_User")
-    .doc("Admin" + admNum)
-    .get()
-    .then((querySnapshot) => {
-      var details = [];
-      querySnapshot.forEach((doc) => {
-        details.push(doc.data());
-      });
-      details.forEach((element) => {
-        var e = document.getElementById("adm" + admNum);
-        e.textContent = element.Name;
-        admNum++;
-      });
-    });
-}
-
-/* const docRef = firebase.firestore().collection("myCollection").doc("myDoc");
-
-// Subscribe to changes in the document
-docRef.onSnapshot((doc) => {
-  const data = doc.data();
-  const container = document.getElementById("data-container");
-
-  if (data) {
-    // Update the UI with the new data
-    container.innerHTML = `
-            <p>Name: ${data.name}</p>
-            <p>Age: ${data.age}</p>
-          `;
-  } else {
-    // Show a message if the document doesn't exist
-    container.innerHTML = "<p>Document not found</p>";
-  }
-}); */

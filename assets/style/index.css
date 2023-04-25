@@ -59,17 +59,7 @@ input:valid ~ label {
   padding: 0 35px 0 5px;
   color: #fff;
 }
-button {
-  width: 100%;
-  height: 40px;
-  border-radius: 40px;
-  background: #fff;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 1em;
-  font-weight: 600;
-}
+
 .register {
   font-size: 0.9em;
   color: #fff;
@@ -89,12 +79,24 @@ button {
   height: 35px;
   position: relative;
   background: none;
+  border: 0;
+  font-size: 15px;
+  cursor: pointer;
   padding-top: 20px;
-  color: gray;
+  color: rgb(158, 158, 158);
   float: right;
 }
 .sbmBtn {
   margin-top: 20px;
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  background: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
 }
 table {
   border: 5px;
