@@ -2,7 +2,6 @@
 import { db } from "./firebase.js";
 import { highligter } from "./script.js";
 
-const adminCreater = document.getElementById("adminCreater");
 const err = document.getElementById("err");
 
 export function adminAuther(name, pass, adminid) {
@@ -50,7 +49,7 @@ export function verifier(user, pass) {
       pass: pass,
       salt: random(16),
       // optional
-      time: 2, 
+      time: 2,
       mem: 16384, // used memory, in KiB
       hashLen: 32, // desired hash length
       parallelism: 1, // desired parallelism (it won't be computed in parallel, however)
