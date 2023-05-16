@@ -1,12 +1,10 @@
 {
   "dependencies": {
-    "argon2-browser": "^1.18.0",
-    "random-string-generator": "^1.0.1"
+    "argon2-browser": "^1.18.0"
   },
   "name": "votingsystemadmin",
   "version": "1.0.0",
   "main": "index.html",
-  "devDependencies": {},
   "scripts": {
     "test": "test",
     "start": "start"

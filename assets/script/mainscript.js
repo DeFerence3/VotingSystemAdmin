@@ -65,7 +65,7 @@ bk.addEventListener("click", function (event) {
 function canceller() {
   var rform = document.querySelector(".form-box");
   var blur = document.querySelector(".bgform");
-  rform.style.display = "none";
+  rform.style. display= "none";
   blur.style.display = "none";
 }
 

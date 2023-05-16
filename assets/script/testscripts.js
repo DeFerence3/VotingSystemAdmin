@@ -24,5 +24,5 @@ function nameFetch() {
 import { btss } from "./mainscript";
 
 function onklik(param) {
-  param.id
+  param.id;
 }
