@@ -13,9 +13,6 @@ export function adminAuther(name, pass, adminid) {
         let uname = doc.data().Username;
         let pswd = doc.data().Password;
 
-        console.log(uname);
-        console.log(pswd);
-
         argon2
           .verify({ pass: name, encoded: uname })
           .then(() => {
@@ -59,7 +56,6 @@ export function verifier(user, pass) {
     .then((res) => {
       res.hash; // hash as Uint8Array
       res.hashHex; // hash as hex-string
-      console.log(res.encoded);
     })
     // or error
     .catch((err) => {
@@ -67,4 +63,3 @@ export function verifier(user, pass) {
       console.log("errCode:" + err.code); // numeric error code
     });
 }
-/* */
