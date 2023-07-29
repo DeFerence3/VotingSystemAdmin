@@ -26,10 +26,9 @@ git clone https://github.com/DeFerence3/VotingSystemAdmin.git
 
 ### Setting up firebase
 
-Go into project folder and
-`VotingSystemAdmin/assets/scripts/firebase.js`.
-Copy and paste your firebase config here(can get from Firebase Console).
-Install Dependencies mentioned below.
+Go into project root folder and create a 
+`.env` file.
+setup your firebase config
 
 ### Installing Dependencies
 
