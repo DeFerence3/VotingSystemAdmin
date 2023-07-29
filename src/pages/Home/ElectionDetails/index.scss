@@ -1,0 +1,74 @@
+.container{
+
+    .electiondetails{
+        text-align: center;
+
+        .tablee {
+            border-collapse: collapse;
+            width: 90%;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 60px;
+            margin-left: 5%;
+            margin-right: 5%;
+            border-radius: 10px;
+            overflow: hidden;
+        
+            th.head{
+                background-color: rgb(162, 162, 246);
+                color: #202024;
+                size: 100px;
+                text-align: center;
+                justify-content: center;
+            }
+        
+            th,td {
+                text-align: left;
+                padding: 15px;
+            }
+        
+            th {
+                background-color: #333333;
+                color: #ffffff;
+            }
+        
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+        }
+    
+        .btn {
+            cursor: pointer;
+            outline: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: rgb(162, 162, 246);
+            color: rgb(32, 32, 32);
+            border: 1px solid transparent;
+            transition: 0.3s ease all;
+            margin:0.50em 0.50em;
+
+            & ,pub{
+                margin-top: 20px;
+            }
+    
+            &:hover {
+                border-color: rgb(162, 162, 246);
+                background: rgba(rgb(162, 162, 246), 0.1);
+                color: rgb(162, 162, 246);
+            }
+            &:active {
+                border-color: rgb(162, 162, 246);
+                background: linear-gradient(rgba(rgb(162, 162, 246), 0.2), rgba(rgb(162, 162, 246), 0.3));
+                color: rgb(162, 162, 246);
+            }
+            &.logout{
+                background-color: rgb(32, 32, 32);
+                color:#fff;
+    
+            }
+        }
+    }
+}
