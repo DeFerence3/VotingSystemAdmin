@@ -1,4 +1,4 @@
-**```WARNING:This Product Still In Alpha Stage```**
+**```This project is no longer maintained, support still available```**
 
 # Voting System (Administrator)
 
