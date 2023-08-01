@@ -29,7 +29,7 @@ git clone https://github.com/DeFerence3/VotingSystemAdmin.git
 ### Setting up firebase
 
 Go into project root folder and create a 
-`.env` file.
+`.env` file like [this](https://github.com/DeFerence3/VotingSystemAdmin/blob/inreact/docs/dotenv%20model.txt)
 setup your firebase config
 
 ### Installing Dependencies
