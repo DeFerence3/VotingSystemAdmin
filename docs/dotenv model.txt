@@ -1,0 +1,8 @@
+VITE_API_KEY=your api key
+VITE_AUTH_DOMAIN=your auth dom
+VITE_DB_URL=your database url
+VITE_PROJ_ID=your project id
+VITE_APP_ID=your application id
+VITE_BUCK=your storage bucket
+VITE_MESS_ID=your message sender id
+VITE_MESH_ID=your measurementid
