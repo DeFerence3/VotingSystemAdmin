@@ -13,6 +13,7 @@ adminUpdater.addEventListener("click", function () {
 function updatename(_aid) {
   const aid = _aid;
   console.log(aid);
+  var docref = db.collection("Admin_User").doc(aid);
   if(!(document.getElementById("nm").value==""))
   {
     const nm = document.getElementById("nm").value;
