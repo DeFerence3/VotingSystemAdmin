@@ -16,7 +16,7 @@ This is the Administrative Client of voting system,with this web application ,yo
 - etc
 
 We made this project simple and secure as much as possible as my limited knowledge.
-If you have any suggestion regarding the project security ,design or anything... feel free to open an Issue [here](https://github.com/DeFerence3/VotingSystemAdmin/issues/new). I'm always a learner.
+If you have any suggestion regarding the project security ,design or anything... feel free to open an Issue [here](https://github.com/DeFerence3/VotingSystemAdmin/issues/new).
 
 ## How to setup
 
