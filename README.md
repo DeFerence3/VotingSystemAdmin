@@ -36,11 +36,7 @@ Install Dependencies mentioned below.
 ### Installing Dependencies
 
 ```
-npm i argon-brwoser
-```
-
-```
-npm i random-string-generator
+yarn
 ```
 
 ### Getting started
