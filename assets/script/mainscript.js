@@ -4,9 +4,7 @@ import { db } from "./firebase.js";
 /* Variables declared */
 var viewBt;
 const bk = document.getElementById("beck");
-const addvote = document.getElementById("addvote");
 const thumbnails = document.getElementById("thumb");
-const cancell = document.getElementById("cancel");
 const menutoggler = document.getElementById("menutogglebutton");
 
 /* after window is loaded ,data from firebase is fetched */
@@ -49,33 +47,12 @@ bk.addEventListener("click", function (event) {
   window.location.replace("../index.html");
 });
 
-/* add vote popup visibler */
-/* addvote.addEventListener("click", function (event) {
-  var rform = document.querySelector(".form-box");
-  var blur = document.querySelector(".bgform");
-  rform.style.display = "inline-flex";
-  blur.style.display = "flex";
-}); */
-
-/* unvisibler */
-/* cancell.addEventListener("click", function () {
-  canceller();
-}); */
-
 function canceller() {
   var rform = document.querySelector(".form-box");
   var blur = document.querySelector(".bgform");
-  rform.style.display = "none";
+  rform.style. display= "none";
   blur.style.display = "none";
 }
-
-/* creates new election */
-/* create.addEventListener("click", function (event) {
-  var election = document.getElementById("eleccat").value;
-  var date = new Date().toLocaleString();
-  electionBoxCreater(election, date);
-  canceller();
-}); */
 
 /* create each election boxes */
 function electionBoxCreater(electionName, date, elId) {

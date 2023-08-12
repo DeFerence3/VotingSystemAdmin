@@ -1,6 +1,8 @@
-**```WARNING:This Product Still In Alpha Stage```**
+**```This project is no longer maintained, support still available```**
 
 # Voting System (Administrator)
+
+Somehow works,don't ask how...
 
 My final year project is a Online Voting System focuses on security and usability of both voter and election candidate.
 This is the Administrative Client of voting system,with this web application ,you can:

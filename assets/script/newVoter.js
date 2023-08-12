@@ -19,18 +19,6 @@ submiter.addEventListener("click",async function(event){
   event.preventDefault();
   document.getElementById("progress").style.display = "block";
 
-  //Read from firebase code, compare keyword with argon2id hash to login
-  // argon2.hash({
-  //   pass:"dibin",
-  //   salt:random(16),
-  //   time:2,
-  //   mem:16384,
-  //   hashLen:32,
-  //   parallelism:1,
-  //   type:argon2.ArgonType.Argon2id,
-  //   }).then(h => console.log("Username: ",h.encoded))
-  //   .catch(e => console.error(e.message, e.code));
-  
   var uname = document.getElementById("unm").value;
 
   argon2.hash({

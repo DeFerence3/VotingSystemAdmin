@@ -45,6 +45,7 @@ export function highligter() {
   currentHeader++;
   document.getElementById("unm").value = "";
   document.getElementById("pass").value = "";
+  document.getElementById("unm").focus;
 }
 
 //fetching adminnames from db and displayes in header
